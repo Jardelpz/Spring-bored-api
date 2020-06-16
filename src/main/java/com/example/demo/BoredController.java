@@ -33,7 +33,7 @@ public class BoredController {
         String tip = "&types=";
         if (hour > 0 && (hour <6){
             List res = ["recreational", "relaxation", "music"];
-            int num = Math.Random.nextInt(0, res.size());
+            int num = random(res.size());
             return tip+res[num];
 
         }else if(hour < 10){
@@ -44,7 +44,7 @@ public class BoredController {
 
         }else if(hour < 15){
             List res = ["education", "recreational", "social", "relaxation"];
-            int num = Math.Random.nextInt(0, res.size())
+            int num = random(res.size())
             return tip+res[num];
 
         }else if (hour < 19){
@@ -52,12 +52,12 @@ public class BoredController {
 
         }else{
             List res = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music"];
-            int num = Math.Random.nextInt(0, res.size())
+            int num =random(res.size())
             return tip+res[num];
         }
     }
 
     public int random(int limit){
-        
+        return Random.nextInt(0, limit);
     }
 }
