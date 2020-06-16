@@ -56,4 +56,8 @@ public class BoredController {
             return tip+res[num];
         }
     }
+
+    public int random(int limit){
+        
+    }
 }
