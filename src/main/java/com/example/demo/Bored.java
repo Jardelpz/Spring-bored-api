@@ -13,16 +13,15 @@ public class Bored {
     private double acessibility;
     
     
-	public Bored(String type){
-		// String activity, String type, int participants, double price, String link, int key, double acessibility) {
-		// super();
-		// this.activity = activity;
+	public Bored(String activity, String type, int participants, double price, String link, int key, double acessibility) {
+		super();
+		this.activity = activity;
 		this.type = type;
-		// this.participants = participants;
-		// this.price = price;
-		// this.link = link;
-		// this.key = key;
-		// this.acessibility = acessibility;
+		this.participants = participants;
+		this.price = price;
+		this.link = link;
+		this.key = key;
+		this.acessibility = acessibility;
 	}
 	public String getActivity() {
 		return activity;
