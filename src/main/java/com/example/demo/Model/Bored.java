@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -10,8 +10,9 @@ public class Bored {
     private double price;
     private String link;
     private int key;
-    private double acessibility;
-    
+	private double acessibility;
+	private int hora;
+	
     
 	public Bored(String activity, String type, int participants, double price, String link, int key, double acessibility) {
 		super();
@@ -23,6 +24,14 @@ public class Bored {
 		this.key = key;
 		this.acessibility = acessibility;
 	}
+
+	public int getHour() {
+		return hora;
+	}
+	public void setHour(int hour) {
+		this.hora = hour;
+	}
+
 	public String getActivity() {
 		return activity;
 	}
@@ -65,4 +74,17 @@ public class Bored {
 	public void setAcessibility(double acessibility) {
 		this.acessibility = acessibility;
 	}
+
+	@Override
+	public String toString() {
+		return "activity= " + activity 
+				+ ", type= " + type 
+				+ ", participants= " + participants
+				+ ", price= " + price
+				+ ", link= " + link
+				+ ", key= " + key 
+				+ ", acessibility= " + acessibility
+				+ ", hora= "+ hora;
+	}	
+
 }
