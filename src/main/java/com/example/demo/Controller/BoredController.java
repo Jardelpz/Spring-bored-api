@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Random;
 
 import com.example.demo.Model.*;
@@ -37,19 +36,21 @@ public class BoredController {
         return bored;
     }
 
-    int horarios[] = {4,8,11,13,17};
+    
     @GetMapping("/resumo")
-    public ListBored getResumo(){
-        ListBored list = new ListBored();
-        int participantes = 2;
+    public ArrayList<Bored> getResumo(){
+        int horarios[] = {4,8,11,13,17};
+        ArrayList<Bored> boreds = new ArrayList<>();
         Bored bored;
+        String tipo, url;
         for(int i = 0; i < horarios.length; i++){
-            String tipo = discoverType(this.horarios[i]);
-            String url = makeUrl(api, participantes, tipo);
+            tipo = discoverType(horarios[i]);
+            url = makeUrlResumo(api, tipo);
             bored = restTemplate.getForObject(url, Bored.class);
-            list.addBored(bored);
+            boreds.add(bored);
         }
-        return list;
+        System.out.println(boreds);
+        return boreds;
     }
 
     @GetMapping("/dupla")
@@ -62,8 +63,9 @@ public class BoredController {
 
     @GetMapping("/cost")
     public Bored getMidnightActivity(){    
+        float preco = 0;
         String tipo = discoverType(0);
-        String  url = makeUrl(api, tipo);
+        String  url = makeUrl(api, tipo, preco);
         Bored bored = restTemplate.getForObject(url, Bored.class);
         return bored;
     }
@@ -81,8 +83,12 @@ public class BoredController {
         return url + "participants=" + participants;
     }
 
-    public String makeUrl(String url, String tipo){
-        return url + "price=0" + tipo;
+    public String makeUrl(String url, String tipo, float preco){
+        return url + "price=" + preco + tipo;
+    }
+
+    public String makeUrlResumo(String url, String tipo){
+        return url + tipo;
     }
 
     public String discoverType(int hour){
